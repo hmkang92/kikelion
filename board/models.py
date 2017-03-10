@@ -17,6 +17,7 @@ class Post(models.Model):
 
 	)
 
+	author = models.CharField(max_length=20)
 	title = models.CharField(max_length=100)
 	content = models.TextField(validators=[content_validator])
 	tags = models.CharField(max_length=100, blank=True)
@@ -26,3 +27,5 @@ class Post(models.Model):
 
 
 
+	def __unicode__(self):
+		return self.title

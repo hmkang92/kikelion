@@ -5,7 +5,7 @@ from .models import Post
 #admin.site.register(Post, PostAdmin)
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-	list_display = ['id', 'title', 'content_size', 'subjects', 'created_at', 'updated_at']
+	list_display = ['id', 'author', 'title', 'content_size', 'subjects', 'created_at', 'updated_at']
 
 	actions = ['make_ros', 'make_ruby', 'make_html', 'make_js', 'make_python', 'make_ol']
 
