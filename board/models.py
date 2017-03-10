@@ -7,9 +7,22 @@ def content_validator(value):
 		raise ValidationError('Please enter more than 10 characters')
 
 class Post(models.Model):
+	SUBJECTS_CHOICES = (
+		('R1', 'Rails'),
+		('R2', 'Ruby'),
+		('H', 'HTML'),
+		('J', 'JS'),
+		('P', 'PY'),
+		('O', 'Other'),
+
+	)
+
 	title = models.CharField(max_length=100)
 	content = models.TextField(validators=[content_validator])
 	tags = models.CharField(max_length=100, blank=True)
+	subjects = models.CharField(max_length=1, choices=SUBJECTS_CHOICES)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
+
 
