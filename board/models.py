@@ -26,6 +26,8 @@ class Post(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 
 
+	class Meta:
+		ordering = ['-id']
 
 	def __unicode__(self):
 		return self.title
