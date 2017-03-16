@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Post
+from .models import Post, Comment
 
 #admin.site.register(Post, PostAdmin)
 @admin.register(Post)
@@ -43,3 +43,6 @@ class PostAdmin(admin.ModelAdmin):
 		self.message_user(request, '{} Changed Other Language'.format(updated_count))
 	make_ol.short_description = 'Changed Other Language'
 
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+	pass
