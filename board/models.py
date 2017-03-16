@@ -22,6 +22,7 @@ class Post(models.Model):
 	content = models.TextField(validators=[content_validator])
 	tags = models.CharField(max_length=100, blank=True)
 	subjects = models.CharField(max_length=1, choices=SUBJECTS_CHOICES)
+	tag_set = models.ManyToManyField('Tag')
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
@@ -39,3 +40,24 @@ class Comment(models.Model):
 	message = models.TextField()
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
+
+
+#In [1]: Post
+#Out[1]: board.models.Post
+
+#In [2]: Post.objects.filter(tag_set__name='django')
+#Out[2]: <QuerySet [<Post: 123>]>
+
+#In [3]: Post.objects.filter(tag_set__name='Ruby')
+#Out[3]: <QuerySet [<Post: 123>]>
+
+#In [4]: Post.objects.filter(tag_set__name__in=['django', 'Ruby'])
+#Out[4]: <QuerySet [<Post: 123>, <Post: 123>]>
+
+
+
+class Tag(models.Model):
+	name = models.CharField(max_length=50, unique=True)
+
+	def __unicode__(self):
+		return self.name
