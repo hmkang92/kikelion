@@ -19,7 +19,9 @@
 
 	<li>
 		{{ post.id }}
-		{{ post.title }}
+		<a href="/board/{{ post.id }}">
+			{{ post.title }}
+		</a>
 		<small>{{ post.author }}</small>
 		<small>{{ post.updated_at}}</small>
 	</li>
