@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.forms import ValidationError
+from django.conf import settings
 
 def content_validator(value):
 	if len(value) < 10:
@@ -16,13 +17,12 @@ class Post(models.Model):
 		('O', 'Other'),
 
 	)
-
-	author = models.CharField(max_length=20)
+	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 	title = models.CharField(max_length=100)
 	content = models.TextField(validators=[content_validator])
 	tags = models.CharField(max_length=100, blank=True)
 	subjects = models.CharField(max_length=1, choices=SUBJECTS_CHOICES)
-	tag_set = models.ManyToManyField('Tag')
+	tag_set = models.ManyToManyField('Tag', blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
 
