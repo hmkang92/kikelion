@@ -1,11 +1,12 @@
-<!doctype html>
-<html>
+{% extends "board/layout.html" %}
 
-<head>
-<meta charset="utf-8" />
-<title>{{ post.title }}</title>
-</head>
-<body>
+{% block title %}
+	{{ post.title }}
+{% endblock %}
+
+
+{% block content %}
+
 	<h1>{{ post.title }}</h1>
 
 	{{ post.content|linebreaks }}
@@ -23,6 +24,4 @@
 	{% endfor %}
 	</ul>
 
-</body>
-
-</html>
+{% endblock %}

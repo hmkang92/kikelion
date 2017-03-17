@@ -1,33 +1,26 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8" />
+{% extends "board/layout.html" %}
 
-<title>kikelion</title>
-</head>
+{% block content %}
 
-<body>
+	<form action="" method="get">
+		<input type="text" name="q" value="{{ q }}"/>
+		<input type="submit" value="Search" />
 
-<form action="" method="get">
-	<input type="text" name="q" value="{{ q }}"/>
-	<input type="submit" value="Search" />
+	</form>
 
-</form>
+	<ul>
+	{% for post in post_list %}
 
-<ul>
-{% for post in post_list %}
+		<li>
+			{{ post.id }}
+			<a href="/board/{{ post.id }}">
+				{{ post.title }}
+			</a>
+			<small>{{ post.author }}</small>
+			<small>{{ post.updated_at}}</small>
+		</li>
 
-	<li>
-		{{ post.id }}
-		<a href="/board/{{ post.id }}">
-			{{ post.title }}
-		</a>
-		<small>{{ post.author }}</small>
-		<small>{{ post.updated_at}}</small>
-	</li>
+	{% endfor %}
+	</ul>
 
-{% endfor %}
-</ul>
-
-</body>
-</html>
+{% endblock %}
