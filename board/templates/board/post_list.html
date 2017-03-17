@@ -13,7 +13,7 @@
 
 		<li>
 			{{ post.id }}
-			<a href="/board/{{ post.id }}">
+			<a href="{% url "post_detail" post.id %}">
 				{{ post.title }}
 			</a>
 			<small>{{ post.author }}</small>
