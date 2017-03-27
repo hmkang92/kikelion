@@ -23,5 +23,6 @@
 		</li>
 	{% endfor %}
 	</ul>
-	<a href="{% url "board:post_list" %}">list plz..</a>
+	<a href="{% url "board:post_list" %}">board list</a>
+	<a href="{% url "board:post_edit" post.id %}">board edit</a>
 {% endblock %}
