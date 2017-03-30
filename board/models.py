@@ -21,7 +21,7 @@ class Post(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL)
 	title = models.CharField(max_length=100)
 	content = models.TextField(validators=[content_validator])
-	photo = models.ImageField(blank=True)
+	photo = models.ImageField(blank=True, upload_to='board/post/%Y/%m/%d')
 	user_agent = models.CharField(max_length=200)
 	tags = models.CharField(max_length=100, blank=True)
 	subjects = models.CharField(max_length=1, choices=SUBJECTS_CHOICES)
