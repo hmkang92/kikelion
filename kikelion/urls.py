@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^$', lambda r: redirect('board:post_list'), name='root'),
     #url(r'^$', RedirectView.as_view(pattern_name='board:post_list')),
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^board/', include('board.urls', namespace='board')),
 ]
 
