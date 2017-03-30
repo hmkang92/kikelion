@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Post
 from django.http import Http404
@@ -47,6 +48,7 @@ def post_new(request):
 			
 
 			post = form.save()
+			messages.success(request, 'Save new post!!')
 
 			# solution3)
 			#post = Post(**form.cleaned_data)
@@ -67,6 +69,7 @@ def post_edit(request, id):
 		form = PostForm(request.POST, request.FILES, instance=post)
 		if form.is_valid():
 			post = form.save()
+			messages.success(request, 'Save update post!!')
 			return redirect(post)
 		else:
 			form.errors
