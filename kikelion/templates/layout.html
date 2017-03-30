@@ -26,5 +26,18 @@
 <hr/>
 &copy; 2017 SUSPECT
 
+{% if not user.is_authenticated %}
+	<a href="{% url "signup" %}">join</a>
+	<a href="{% url "login" %}">login</a>
+{% else %}
+	<a href="{% url "profile" %}">profile</a>
+	<a href="{% url "logout" %}">logout</a>
+{% endif %}
+
+
+
+
+
+
 </body>
 </html>
