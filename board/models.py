@@ -3,6 +3,8 @@ from django.db import models
 from django.forms import ValidationError
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from imagekit.models import ImageSpecField
+from imagekit.processors import Thumbnail
 
 def content_validator(value):
 	if len(value) < 10:
@@ -22,6 +24,10 @@ class Post(models.Model):
 	title = models.CharField(max_length=100)
 	content = models.TextField(validators=[content_validator])
 	photo = models.ImageField(blank=True, upload_to='board/post/%Y/%m/%d')
+	photo_thumbnail = ImageSpecField(source='photo',
+		processors=[Thumbnail(300,300)],
+		format='JPEG',
+		options={'quality': 60})
 	user_agent = models.CharField(max_length=200)
 	tags = models.CharField(max_length=100, blank=True)
 	subjects = models.CharField(max_length=1, choices=SUBJECTS_CHOICES)

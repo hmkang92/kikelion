@@ -4,3 +4,5 @@ ipython[notebook]
 django-extensions
 django-bootstrap3
 pillow
+pilkit
+django-imagekit
