@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.forms import ValidationError
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from imagekit.models import ProcessedImageField
 from imagekit.processors import Thumbnail
 
@@ -42,7 +42,7 @@ class Post(models.Model):
 		return self.title
 
 	def get_absolute_url(self):
-		return reverse('board:post_detail', args='[self.id]')
+		return reverse('board:post_detail', args=[self.id])
 
 
 

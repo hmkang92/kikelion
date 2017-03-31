@@ -17,13 +17,13 @@ class SignupForm(UserCreationForm):
 		fields = UserCreationForm.Meta.fields + ('email',)
 
 	def save(self):
-		user = super().save()
+		#user = super().save()
+		user = super(SignupForm, self).save()
 		profile = Profile.objects.create(
 			user = user,
 			phone_number = self.cleaned_data['phone_number'],
 			department = self.cleaned_data['department'],
 			student_number = self.cleaned_data['student_number'])
-			 
 		return user
 		
 		
